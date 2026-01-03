@@ -115,6 +115,11 @@ input,select{
       <span>Total de vendas</span>
       <h3 id="vendasTotal">0</h3>
     </div>
+
+    <div class="card">
+      <span>Vendas do dia</span>
+      <h3 id="vendasDia">0</h3>
+    </div>
   </div>
 
   <button class="btn red" onclick="resetarDia()">Resetar dia</button>
@@ -124,7 +129,7 @@ input,select{
 <div id="vendas" class="page">
   <h1>Adicionar Venda</h1>
 
-  <input id="valorVenda" placeholder="Valor da venda (R$)">
+  <input id="valorVenda" type="number" placeholder="Valor da venda (R$)">
   <input id="quantidadeVenda" type="number" placeholder="Quantidade de vendas">
 
   <select id="statusVenda">
@@ -178,6 +183,7 @@ function atualizar(){
   faturado.innerText = `R$ ${dados.faturado.toFixed(2)}`;
   faturadoDia.innerText = `R$ ${dados.faturadoDia.toFixed(2)}`;
   vendasTotal.innerText = dados.vendas;
+  vendasDia.innerText = dados.vendasDia;
   saldo.style.color = dados.saldo < 0 ? "var(--red)" : "var(--green)";
 }
 
@@ -232,9 +238,9 @@ function sacar(){
 }
 
 function resetarDia(){
-  if(confirm("Resetar vendas do dia?")){
-    dados.vendasDia=0;
-    dados.faturadoDia=0;
+  if(confirm("Resetar vendas e faturamento do dia?")){
+    dados.vendasDia = 0;
+    dados.faturadoDia = 0;
     salvar();
   }
 }
@@ -259,3 +265,5 @@ atualizar();
 
 </body>
 </html>
+
+
